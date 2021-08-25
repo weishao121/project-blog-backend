@@ -8,7 +8,7 @@ npm install // to install all necessary dependencies
 ```
 # Usage
 ```javascript
-npm run start // to start the server on local port 8081
+npm start // to start the server on local port 8081
 ```
 # API Reference
 ```javascript
