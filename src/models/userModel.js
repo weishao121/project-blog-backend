@@ -1,12 +1,16 @@
-// const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
+const saltRounds = 10
 
-// function hashPassword (user, options) {
-//   const SALT_FACTOR = 8
-//   if (!user.changed('password')) {
-//     return
-//   }
-//   return bcrypt.getSaltAsync(SALT_FACTOR).then(salt => bcrypt.hashAsync(user.password, salt, null)).then(hash => { user.setDataValue('password', hash) })
-// }
+async function hashPassword (user, options) {
+  if (!user.changed('password')) {
+    return
+  }
+  // console.log('Hash here using salt rounds: ', saltRounds)
+  return await bcrypt.hash(user.password, saltRounds)
+    .then(hash => {
+      user.setDataValue('password', hash)
+    })
+}
 
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define('user', {
@@ -17,9 +21,15 @@ module.exports = (sequelize, Sequelize) => {
     password: {
       type: Sequelize.STRING
     }
+  }, {
+    hooks: {
+      // beforeCreate: hashPassword,
+      // beforeUpdate: hashPassword,
+      beforeSave: hashPassword
+    }
   })
-  // User.prototype.comparePassword = function (password) {
-  //   return bcrypt.compareAsync(password, this.password)
-  // }
+  User.prototype.comparePassword = function (password) {
+    return bcrypt.compare(password, this.password)
+  }
   return User
 }

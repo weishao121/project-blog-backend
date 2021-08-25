@@ -4,6 +4,10 @@ This is the back-end portion of project blog. This repo is inspired by the proje
 ```javascript
 npm install // to install all necessary dependencies
 ```
+# Usage
+```javascript
+npm run start // to start the server on local port 8081
+```
 # API Reference
 ```javascript
 /register // register a user
