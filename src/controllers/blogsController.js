@@ -67,12 +67,41 @@ module.exports = {
           mainTag: req.params.category
         }
       })
-
       res.send(blog)
     } catch (error) {
       res.status(400).send({
         error: 'Cannot find blogs with that category'
       })
     }
-  }
+  },
+  async put (req, res) {
+    console.log(req.params)
+    try {
+      const blog = await Blog.update(req.body, {
+        where: {
+          id: req.params.blogId
+        }
+      })
+      res.send(this.body)
+    } catch (error) {
+      res.status(400).send({
+        error: 'Cannot edit your blog'
+      })
+    }
+  },
+  async delete (req, res) {
+    console.log(req.params)
+    try {
+      const blog = await Blog.destroy({
+        where: {
+          id: req.params.blogId
+        }
+      })
+      res.send(this.body)
+    } catch (error) {
+      res.status(400).send({
+        error: 'Cannot delete your blog'
+      })
+    }
+  },
 }
