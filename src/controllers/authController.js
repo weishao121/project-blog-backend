@@ -65,6 +65,21 @@ module.exports = {
         error: 'User does not exist'
       })
     }
+  },
+  async put (req, res) {
+    console.log(req.params)
+    try {
+      const user = await User.update(req.body, {
+        where: {
+          id: req.params.userId
+        }
+      })
+      res.send(this.body)
+    } catch (error) {
+      res.status(400).send({
+        error: 'Unable to edit your details'
+      })
+    }
   }
 
 }
