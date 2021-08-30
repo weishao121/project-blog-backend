@@ -21,7 +21,7 @@ module.exports = {
       })
     } catch (error) {
       res.status(400).send({
-        error: 'This email account is already in use.'
+        error: 'Username or mail account is already in use.'
       })
     }
   },
