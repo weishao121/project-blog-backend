@@ -71,9 +71,51 @@ Return JSON data of a registered user
     "error": "Password must be a-z A-Z 0-9 min3 max30."
   }
   ```
+## Login user
+Return JSON data of a logged in user
+* **URL**
 
-/login // login a user
+  /login  
+* **Method**
 
+  `POST`
+* **URL Params**
+
+  None
+* **Data Params**
+
+  ```javascript
+  username = [string]
+  password = [string]
+  ```
+* **Success**
+
+  Code: 200
+  ```javascript
+  {
+    user: {
+      id: 9,
+      username: "aaccbde324",
+      email: "aaccbde324@email.com",
+      password: "T9KddykM85J790bOM3dK6",
+      updatedAt: "2021-09-01T02:52:36.718Z",
+      createdAt: "2021-09-01T02:52:36.718Z"
+      },
+    token: "cm5hbWUiOiJyYXkiLCJlbWFpbCI6InR"
+  }
+  ```
+* **Error**
+
+  Code: 400
+  ```javascript
+  {
+    "error": "Incorrect username or password"
+  }
+  ```
+
+## Api docs In progress
+
+```
 /user/:userid // show a user's profile
 
 / // show all blogs
@@ -85,5 +127,6 @@ Return JSON data of a registered user
 /blog // show blogs that belong to a user (POST userId)
 
 /category/:category // show blogs that belong to a category
+```
 # License
 [MIT](https://choosealicense.com/licenses/mit/)
