@@ -1,7 +1,7 @@
 # Project-blog-backend
 This is the back-end portion of project blog. This repo is inspired by the project from my work at OpenAtom Foundation.<br><br>
-The back-end is written in NodeJs, with dependencies such as bcrypt & json web token for security and state management.<br>
-This project is also using sqlite for local storage, thus, sequelize & sqlite3 are used. 
+The back-end project is written in NodeJs, Express, with dependencies such as bcrypt & json web token for security and state management.<br>
+This project is also using sqlite,sequelize & sqlite3 for local storage and data manipulation. Also, I have utilized bcrypt, jsonwebtoken and joi for user authenication and various validation tasks.
 # Installation
 ```javascript
 npm install // to install all necessary dependencies
